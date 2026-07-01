@@ -7,8 +7,21 @@ static DEV_HANDLE s_devHandle = DEV_HANDLE_INVALID;
 void app_main(void)
 {
     int status = HOST_ERRCODE_SUCCESS;
-    DevHw_t devHwCfg = {};
-    HifCfg_t hifCfg = {};
+    DevHw_t devHwCfg = {
+        .bus_speed        = 32000000,  // 32M
+        .bus_type         = LLC_BUS_TYPE_SPI,
+        .bus_param        = LLC_BUS_PARAM_SPI,
+        .bus_event_method = LLC_BUS_EVENT_METHOD_ORDER,
+        .upd_io           = 25,
+        .rst_io           = 26,
+        .notify_io        = 9,
+        .notify_type      = LLC_NOTIFY_TYPE_EDGE,
+        .upload_type      = LLC_UPLOAD_TYPE_PASSIVE,
+        .param            = 10,
+    };
+    HifCfg_t hifCfg = {
+        .cmd_buf_len      = 1024,
+    };
 
     do {
         status = Host_Driver_Init();

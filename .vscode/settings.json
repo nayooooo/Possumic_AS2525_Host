@@ -1,16 +1,17 @@
 {
   "C_Cpp.intelliSenseEngine": "default",
   "idf.extensionActivationMode": "always",
-  "idf.currentSetup": "D:\\Users\\YEWAN\\esp\\v5.5.1\\esp-idf",
+  "idf.currentSetup": "D:\\esp\\.espressif\\v6.0.2\\esp-idf",
   "idf.portWin": "COM3",
   "idf.openOcdConfigs": [
     "board/esp32c5-ftdi.cfg"
   ],
   "idf.flashType": "UART",
   "idf.customExtraVars": {
-    "IDF_TARGET": "esp32c5"
+    "IDF_TARGET": "esp32c5",
+    "ADF_PATH": "d:\\esp\\.espressif\\esp-adf"
   },
-  "clangd.path": "C:\\Espressif\\tools\\esp-clang\\esp-20.1.1_20250829\\esp-clang\\bin\\clangd.exe",
+  "clangd.path": "D:\\Users\\YEWAN\\.espressif\\tools\\esp-clang\\esp-19.1.2_20250312\\esp-clang\\bin\\clangd.exe",
   "clangd.arguments": [
     "--background-index",
     "--query-driver=**",

@@ -4,6 +4,7 @@
 #include "../host_port.h"
 
 #if (CFG_HOST_PORT_IO_EN == 1)
+#include "driver/gpio.h"
 #endif  /* CFG_HOST_PORT_IO_EN == 1 */
 
 
