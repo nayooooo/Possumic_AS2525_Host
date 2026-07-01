@@ -9,6 +9,7 @@
 #include "freertos/semphr.h"
 #include "esp_timer.h"
 #include <stdlib.h>
+#include "driver/gpio.h"
 #endif  /* CFG_HOST_PORT_OS_EN == 1 */
 
 
@@ -162,12 +163,24 @@ int host_os_delayus(uint32_t us)
 
 
 #if (CFG_HOST_PORT_PM_EN == 1)
+#define S_LED_PIN              27
+
+static bool s_led_has_been_config = false;
+
 void host_os_pm_lock(void)
 {
+    if (!s_led_has_been_config) {
+        s_led_has_been_config = true;
+        gpio_reset_pin(S_LED_PIN);
+        gpio_set_direction(S_LED_PIN, GPIO_MODE_OUTPUT);
+    }
+
+    gpio_set_level(S_LED_PIN, true);
 }
 
 void host_os_pm_unlock(void)
 {
+    gpio_set_level(S_LED_PIN, false);
 }
 #endif  /* CFG_HOST_PORT_PM_EN == 1 */
 #endif  /* CFG_HOST_PORT_OS_EN == 1 */

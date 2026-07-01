@@ -13,7 +13,7 @@ idf_component_register(
         "."
         ${HOST_DRIVER_INCLUDE_DIRS}
     PRIV_REQUIRES
-        freertos esp_timer
+        freertos esp_timer driver
 )
 
 target_compile_options(
