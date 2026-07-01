@@ -20,8 +20,6 @@ extern "C" {
 
 #define CFG_HOST_PORT_LOG_FILE                                      "../esp32c5_idf6.0.2/port_log.h"
 
-#include "prj_config.h"
-
 
 #ifdef __cplusplus
 }
