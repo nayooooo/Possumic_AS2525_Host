@@ -12,6 +12,8 @@ idf_component_register(
     INCLUDE_DIRS
         "."
         ${HOST_DRIVER_INCLUDE_DIRS}
+    PRIV_REQUIRES
+        freertos esp_timer
 )
 
 target_compile_options(
