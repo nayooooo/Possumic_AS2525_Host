@@ -20,7 +20,7 @@ extern "C" {
 
 #define CFG_HOST_PORT_LOG_FILE                                      "../esp32c5_idf6.0.2/port_log.h"
 
-#define CFG_HOST_PORT_PM_EN                                         1  // do not use pm, use led
+#define CFG_HOST_PORT_PM_EN                                         0  // do not use pm, use led
 
 
 #ifdef __cplusplus
