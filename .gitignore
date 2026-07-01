@@ -37,7 +37,8 @@ sdkconfig
 /components/.idf/
 **/components/.idf/
 # For modern ESP-IDF component manager
-managed_components/
+managed_components/*
+!managed_components/espressif__led_strip/
 # If ESP-IDF tools are installed/referenced locally to the project
 .espressif/
 

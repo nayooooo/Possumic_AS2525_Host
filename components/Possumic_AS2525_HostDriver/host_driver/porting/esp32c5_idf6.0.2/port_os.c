@@ -9,7 +9,7 @@
 #include "freertos/semphr.h"
 #include "esp_timer.h"
 #include <stdlib.h>
-#include "driver/gpio.h"
+#include "led_strip.h"
 #endif  /* CFG_HOST_PORT_OS_EN == 1 */
 
 
@@ -166,21 +166,34 @@ int host_os_delayus(uint32_t us)
 #define S_LED_PIN              27
 
 static bool s_led_has_been_config = false;
+static led_strip_handle_t led_strip;
 
 void host_os_pm_lock(void)
 {
     if (!s_led_has_been_config) {
         s_led_has_been_config = true;
-        gpio_reset_pin(S_LED_PIN);
-        gpio_set_direction(S_LED_PIN, GPIO_MODE_OUTPUT);
+        led_strip_config_t strip_config = {
+            .strip_gpio_num = S_LED_PIN,
+            .max_leds = 1,
+        };
+        led_strip_rmt_config_t rmt_config = {
+            .resolution_hz = 10 * 1000 * 1000, // 10MHz
+            .flags.with_dma = false,
+        };
+        esp_err_t status = led_strip_new_rmt_device(&strip_config, &rmt_config, &led_strip);
+        if (status != ESP_OK) {
+            HOST_LOG_ERR("%s: new a led device fail(%d)\n", __func__, status);
+        }
+        led_strip_clear(led_strip);
     }
 
-    gpio_set_level(S_LED_PIN, true);
+    led_strip_set_pixel(led_strip, 0, 2, 2, 8);
+    led_strip_refresh(led_strip);
 }
 
 void host_os_pm_unlock(void)
 {
-    gpio_set_level(S_LED_PIN, false);
+    led_strip_clear(led_strip);
 }
 #endif  /* CFG_HOST_PORT_PM_EN == 1 */
 #endif  /* CFG_HOST_PORT_OS_EN == 1 */
