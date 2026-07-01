@@ -1050,7 +1050,7 @@ int HIF_Cmd_Request(HIF_HANDLE hdl, uint32_t msg_id, void *param,
 				HOST_LOG_ERR("%s:Wait CmdResp=0x%02x Failed %d!\n", __func__, msg_id, ret);
 			}
 		} else {
-			HOST_LOG_ERR("%s:Send Cmd0x%02x len=%d Failed %d!\n",
+			HOST_LOG_ERR("%s:Send Cmd0x%02x len=%u Failed %d!\n",
 						__func__, msg_id, param_len, ret);
 		}
 		local->wait_cmd_enable = false;

@@ -6,11 +6,17 @@ set(HOST_DRIVER_INCLUDE_DIRS
     "host_driver/cmd_api"
 )
 
-list(FILTER HOST_DRIVER_SRCS EXCLUDE REGEX "^host_driver/porting/psic/")
-
 idf_component_register(
     SRCS
         ${HOST_DRIVER_SRCS}
     INCLUDE_DIRS
+        "."
         ${HOST_DRIVER_INCLUDE_DIRS}
+)
+
+target_compile_options(
+    ${COMPONENT_LIB} PRIVATE
+    -Wno-implicit-fallthrough
+    -Wno-unused-function
+    -Wno-format
 )

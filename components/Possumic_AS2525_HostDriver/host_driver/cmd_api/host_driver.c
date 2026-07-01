@@ -7,7 +7,7 @@
  **************************************************************************************************
  */
 #include "host_driver.h"
-#include "host_mmw_api.h"  //get 0x00-0x0F macro
+#include "rs6x_7x/host_mmw_api.h"  //get 0x00-0x0F macro
 
 #define HOST_DEVICE_SYNC_PERIOD_MS             10
 #define HOST_DEVICE_SYNC_CNT_LIMIT             30

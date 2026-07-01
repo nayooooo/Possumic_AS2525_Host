@@ -34,6 +34,7 @@ void host_io_write(uint32_t io, host_io_value_t value, bool is_wkio)
 
 host_io_value_t host_io_read(uint32_t io, bool is_wkio)
 {
+    return 0;
 }
 
 

@@ -27,7 +27,7 @@ void app_main(void)
 
         status = Host_Device_Open(s_devHandle);
         if (status != HOST_ERRCODE_SUCCESS) {
-            HOST_LOG_ERR("open device(%p) fail(%d)\n", s_devHandle);
+            HOST_LOG_ERR("open device(%p) fail(%d)\n", s_devHandle, status);
             break;
         }
         HOST_LOG_INF("open device(%p) succ\n", s_devHandle);

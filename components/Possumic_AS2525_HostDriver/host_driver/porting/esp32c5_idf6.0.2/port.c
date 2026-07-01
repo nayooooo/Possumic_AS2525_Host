@@ -12,6 +12,8 @@
  */
 #include "../host_port.h"
 
+#include "../../protocol/llc/host_llc_com_bus.h"
+
 
 /* Exported types.
  * ------------------------------------------------------------------------------------------------

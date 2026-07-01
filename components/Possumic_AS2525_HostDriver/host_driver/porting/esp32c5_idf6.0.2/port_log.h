@@ -15,6 +15,7 @@ extern "C" {
 #include "../host_port.h"
 
 #if (CFG_HOST_PORT_LOG_EN == 1)
+#include "esp_rom_sys.h"
 #endif  /* CFG_HOST_PORT_LOG_EN == 1 */
 
 
@@ -27,7 +28,7 @@ extern "C" {
 /* Exported functions.
  * ------------------------------------------------------------------------------------------------
  */
-// #define host_log_print(fmt, ...)                            printf(fmt, ##__VA_ARGS__)
+#define host_log_print(fmt, ...)                            ets_printf(fmt, ##__VA_ARGS__)
 
 #ifdef __cplusplus
 }
