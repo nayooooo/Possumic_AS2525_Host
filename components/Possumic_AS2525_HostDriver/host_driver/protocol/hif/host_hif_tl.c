@@ -24,7 +24,7 @@
 #define HIF_TL_RECV_QUEUE_MAX_DEF       32     /* default max num of receive queue */
 #endif
 
-#define HIF_TL_TASK_STACK_SIZE          2048
+#define HIF_TL_TASK_STACK_SIZE          3072
 #define HIF_TL_CMD_BUF_LEN              1024 /* command buffer for config and response */
 #define HIF_TL_POLL_BUF_LEN             512  /* poll buffer for message tlv ack */
 

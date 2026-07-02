@@ -10,6 +10,7 @@ void app_main(void)
     DevHw_t devHwCfg = {
         .bus_speed        = 32000000,  // 32M
         .bus_type         = LLC_BUS_TYPE_SPI,
+        .bus_id           = 2,
         .bus_param        = LLC_BUS_PARAM_SPI,
         .bus_event_method = LLC_BUS_EVENT_METHOD_ORDER,
         .upd_io           = 25,
@@ -19,6 +20,7 @@ void app_main(void)
         .upload_type      = LLC_UPLOAD_TYPE_PASSIVE,
         .param            = 10,
     };
+    devHwCfg.param = (devHwCfg.param & 0x3F) | ((devHwCfg.bus_speed & 0x3FFFFFF) << 6);
     HifCfg_t hifCfg = {
         .cmd_buf_len      = 1024,
     };
