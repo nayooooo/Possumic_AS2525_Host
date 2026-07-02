@@ -6,6 +6,7 @@ extern "C" {
 #endif
 
 #include "host_driver.h"
+#include "rs6x_7x/host_mmw_api.h"
 
 #ifdef __cplusplus
 }

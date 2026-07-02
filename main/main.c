@@ -4,6 +4,15 @@
 
 static DEV_HANDLE s_devHandle = DEV_HANDLE_INVALID;
 
+static void C6_Report_Handle(uint32_t msg_id, uint8_t *data, uint32_t data_len, void *cb_arg)
+{
+    if (msg_id == 0xC6) {
+        if (data != NULL && data_len > 0) {
+            HOST_LOG_INF_HEX(data, ((data_len < 128) ? data_len : 128), "dev(%p) data len=%u", cb_arg, data_len);
+        }
+    }
+}
+
 void app_main(void)
 {
     int status = HOST_ERRCODE_SUCCESS;
@@ -39,6 +48,13 @@ void app_main(void)
             break;
         }
         HOST_LOG_INF("regist device(%p) succ\n", s_devHandle);
+
+        status = Mmw_C6_GeneralData_Handle_Set(s_devHandle, C6_Report_Handle, s_devHandle);
+        if (status != HOST_ERRCODE_SUCCESS) {
+            HOST_LOG_ERR("set C6 handle fail(%d)\n", status);
+            break;
+        }
+        HOST_LOG_INF("set C6 handle succ\n");
 
         status = Host_Device_Open(s_devHandle);
         if (status != HOST_ERRCODE_SUCCESS) {
